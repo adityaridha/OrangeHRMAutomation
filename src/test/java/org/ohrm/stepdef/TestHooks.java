@@ -1,17 +1,31 @@
 package org.ohrm.stepdef;
 
 import io.cucumber.java.After;
+import io.cucumber.java.AfterAll;
 import io.cucumber.java.Before;
-import org.ohrm.BaseTest;
+import io.cucumber.java.BeforeAll;
+import org.ohrm.page.DashboardPage;
+import org.ohrm.page.LeavePage;
+import org.ohrm.page.LoginPage;
+import org.ohrm.page.Pages;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class TestHooks extends BaseTest {
+import java.time.Duration;
+import java.util.List;
+
+public class TestHooks extends Pages {
     @Before
-    public void beforeTest() {
-        getDriver();
+    public static void before() throws InterruptedException {
+        setupDriver();
     }
 
     @After
-    public void afterTest() {
-        driver.close();
+    public static void after() {
+        driver.quit();
     }
+
+
 }

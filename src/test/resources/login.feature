@@ -1,9 +1,9 @@
 @login
 Feature: Login
 
-  @valid-login
+  @success-login
   Scenario: Login using valid email and password
     Given user is on login page
-    And user input username with "standard_user"
-    And user input password with "secret_sauce"
-    When user click login button
+    And user login using "admin" as username and "admin123" as password
+    And user should be on dashboard page
+    And user click "Leave" menu

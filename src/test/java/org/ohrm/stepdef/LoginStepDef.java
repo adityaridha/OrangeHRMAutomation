@@ -4,15 +4,13 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.ohrm.BaseTest;
-import org.ohrm.page.LoginPage;
+import org.ohrm.page.Pages;
 
-public class LoginStepDef extends BaseTest {
-    LoginPage loginPage;
+public class LoginStepDef extends Pages {
+
 
     @Given("user is on login page")
-    public void userIsOnLoginPage() {
-        loginPage = new LoginPage(driver);
+    public void userIsOnLoginPage() throws InterruptedException {
         loginPage.goToLoginPage();
     }
 
@@ -34,5 +32,12 @@ public class LoginStepDef extends BaseTest {
     @Then("user able to see error message {string}")
     public void userAbleToSeeErrorMessage(String errorMessage) {
         loginPage.validateErrorAppear(errorMessage);
+    }
+
+    @And("user login using {string} as username and {string} as password")
+    public void userLoginUsingAsUsernameAndAsPassword(String username, String password) {
+        loginPage.inputUsername(username);
+        loginPage.inputPassword(password);
+        loginPage.clickLoginButton();
     }
 }
